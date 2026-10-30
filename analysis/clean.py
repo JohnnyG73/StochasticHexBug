@@ -31,4 +31,5 @@ for col in data.columns:
 
 
 out_path = Path("data/clean") / f"{raw_path.stem}_clean.csv"
+out_path.parent.mkdir(exist_ok=True)
 data[columns].to_csv(out_path, index=False)
