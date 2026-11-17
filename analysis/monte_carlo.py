@@ -56,12 +56,12 @@ plt.xlabel("N")
 plt.ylabel("k (1/s)")
 plt.savefig(RESULTS / "monte_carlo.png")
 
-# Paths: 200 fake experiments (all runs pooled) for 600 s, real data in black
+# Paths: 50 fake experiments (all runs pooled) for 600 s, real data in black
 plt.figure()
-for _ in range(200):
-    fake_logs = [(N, simulate_run(N, k_all, 600)) for N, log in logs]
-    fraction = pooled_fraction(fake_logs, 600)
-    plt.plot(np.arange(len(fraction)) * DT, fraction, lw=0.5)
+for _ in range(50):
+    fake_logs = [(N, simulate_run(N, k_all, 130)) for N, log in logs]
+    fraction = pooled_fraction(fake_logs, 130)
+    plt.plot(np.arange(len(fraction)) * DT, fraction, lw=0.1)
 
 fraction = pooled_fraction(logs, min(log["time"].iloc[-1] for N, log in logs))
 plt.plot(np.arange(len(fraction)) * DT, fraction, "k", lw=2)
